@@ -7,6 +7,12 @@ import java.util.*;
 public class FloorSubsystem implements Runnable {
 	
 	private static String inputFile = "inputs/inputFile.txt";
+	Scheduler s;
+	
+	public FloorSubsystem(Scheduler s)
+	{
+		this.s = s;
+	}
 
 	private static Direction getDirection(String s) {
 		switch (s.toLowerCase()) {
@@ -55,6 +61,15 @@ public class FloorSubsystem implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		
+		while(true)
+		{
+			String e = "Elevator"; //placeholder, this will be replaced with floor data
+	        s.scheduleElevator(e);
+	        
+	        //let the user know on the console that the thread is running
+	        System.out.println(Thread.currentThread().getName() + " Requested an elevator ");
+		}
 		
 	}
 	
