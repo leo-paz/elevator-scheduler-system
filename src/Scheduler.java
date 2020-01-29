@@ -2,32 +2,32 @@ import java.util.ArrayList;
 
 public class Scheduler extends Thread {
 	
-	ArrayList<Object> elevatorWaitingList = null;
-	public boolean empty = true;
+	ArrayList<FloorButtonRequest> elevatorWaitingList = null;
 	int count = 0; //count number of elevators
 
 	/**
 	 * Put an elevator on the scheduler when a user from a floor requests it.
 	 * @param elevator
 	 */
-	public synchronized void scheduleElevator(Object floor)
+	public synchronized void scheduleElevator(FloorButtonRequest floor)
 	{
-        while (!empty) { //wait if there is already a user (floor) being serviced. they should be serviced first
+        while (!elevatorWaitingList.isEmpty()) { //wait if there is already a user (floor) being serviced. they should be serviced first
             try {
                 wait();
             } catch (InterruptedException e) {
+            	System.out.println(e.getStackTrace());
                 return;
             }
         }
         
-        elevatorWaitingList = new ArrayList<Object>();
+        elevatorWaitingList = new ArrayList<FloorButtonRequest>();
         elevatorWaitingList.add(floor);
-        empty = false; // the user (floor) has been serviced
-	      try {
-	          Thread.sleep(1000);     // slow it down 
-	       } catch (InterruptedException e) {
-	               return;
-	       }  // finished if interrupted
+	    try {
+	    	Thread.sleep(1000);     // slow it down 
+	    } catch (InterruptedException e) {
+	    	System.out.println(e.getStackTrace());
+	    	return;
+	    }  // finished if interrupted
         notifyAll();
 	}
 	
@@ -35,28 +35,29 @@ public class Scheduler extends Thread {
 	 * Get an elevator when a user from a floor wants to use the elevator
 	 * @return
 	 */
-	public synchronized Object getElevator()
+	public synchronized FloorButtonRequest getElevator()
 	{
-		while(empty) //if there are no users (floors) waiting to be serviced, wait
+		while(elevatorWaitingList.isEmpty()) //if there are no users (floors) waiting to be serviced, wait
 		{
 			try {
-            		wait();
+				wait();
 			} catch (InterruptedException e) {
-    	   			return null;
+				System.out.println(e.getStackTrace());
+    	   		return null;
 			}
 		}
 		
-		 ArrayList<Object> item = elevatorWaitingList;
-	     elevatorWaitingList = null;
-	     empty = true;
+		FloorButtonRequest item = elevatorWaitingList.get(0);
+	    elevatorWaitingList = null;
 	     
-	      try {
+	    try {
 	          Thread.sleep(1000);     // slow it down 
-	       } catch (InterruptedException e) {
-	               return null;
-	       } 
-	     notifyAll();
-	     return item;
+	    } catch (InterruptedException e) {
+	    	System.out.println(e.getStackTrace());
+	    	return null;
+	    } 
+	    notifyAll();
+	    return item;
 	     
 	}
 }
