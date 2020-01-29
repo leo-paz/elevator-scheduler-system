@@ -7,6 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
 
+/**
+ * This is the floor subsystem
+ *
+ */
 public class FloorSubsystem implements Runnable {
 	
 	private static String inputFile = "inputs/inputFile.txt";
