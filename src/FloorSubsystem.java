@@ -2,10 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
 
 public class FloorSubsystem implements Runnable {
 	
@@ -13,8 +10,7 @@ public class FloorSubsystem implements Runnable {
 	
 	Scheduler s;
 	
-	public FloorSubsystem(Scheduler s)
-	{
+	public FloorSubsystem(Scheduler s) {
 		this.s = s;
 	}
 
@@ -31,6 +27,8 @@ public class FloorSubsystem implements Runnable {
 	
 	private static List<FloorButtonRequest> readInputFile() {
 		FileReader input = null;
+		List<FloorButtonRequest> requests = new ArrayList<FloorButtonRequest>();
+		
 		try {
 			input = new FileReader(inputFile);
 		} catch (FileNotFoundException e) {
@@ -39,8 +37,6 @@ public class FloorSubsystem implements Runnable {
 
 		BufferedReader bufferRead = new BufferedReader(input);
 		String myLine = null;
-
-		List<FloorButtonRequest> requests = new LinkedList<FloorButtonRequest>();
 
 		try {
 			while ((myLine = bufferRead.readLine()) != null) {
@@ -64,14 +60,12 @@ public class FloorSubsystem implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while(true)
-		{
-			String e = "Elevator"; //placeholder, this will be replaced with floor data
-	        s.scheduleElevator(e);
+		while(true) {
+			List<FloorButtonRequest> requests = readInputFile();
+			s.scheduleElevator(requests.get(0));
 	        
-	        //let the user know on the console that the thread is running
-	        System.out.println(Thread.currentThread().getName() + " Requested an elevator ");
+			//let the user know on the console that the thread is running
+	        	System.out.println(Thread.currentThread().getName() + " Requested an elevator ");
 		}
-		
 	}
 }
