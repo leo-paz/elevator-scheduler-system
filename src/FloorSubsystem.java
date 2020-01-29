@@ -29,7 +29,7 @@ public class FloorSubsystem implements Runnable {
 		}
 	}
 	
-	private static FloorButtonRequest readInputFile() {
+	private static List<FloorButtonRequest> readInputFile() {
 		FileReader input = null;
 		try {
 			input = new FileReader(inputFile);
@@ -52,13 +52,13 @@ public class FloorSubsystem implements Runnable {
 				String destinationFloor = info[3];
 
 				FloorButtonRequest currRequest = new FloorButtonRequest(time, floorNum, direction, destinationFloor);
-				return currRequest;
+				requests.add(currRequest);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		return null;
+		return requests;
 	}
 	
 	@Override
@@ -66,8 +66,8 @@ public class FloorSubsystem implements Runnable {
 		// TODO Auto-generated method stub
 		while(true)
 		{
-			FloorButtonRequest newRequest = readInputFile();
-	        s.scheduleElevator(newRequest);
+			String e = "Elevator"; //placeholder, this will be replaced with floor data
+	        s.scheduleElevator(e);
 	        
 	        //let the user know on the console that the thread is running
 	        System.out.println(Thread.currentThread().getName() + " Requested an elevator ");
