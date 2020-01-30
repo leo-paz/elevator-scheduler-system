@@ -62,16 +62,20 @@ public class FloorSubsystem implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		List<FloorButtonRequest> requests = readInputFile();
-		while(s.getCompletedRequests() < requests.size()) {
+		ArrayList<FloorButtonRequest> requests = (ArrayList<FloorButtonRequest>) readInputFile();
 			
-			ArrayList<FloorButtonRequest> r = (ArrayList<FloorButtonRequest>) requests;
-			for(int i = 0; i < r.size(); i++)
-			{
-				//let the user know on the console that the thread is running
-				System.out.println(Thread.currentThread().getName() + " " + r.get(i).getFloorNum() +  " Requested an elevator ");
-				s.scheduleElevator(r.get(i));
-			}	
+		for(int i = 0; i < requests.size(); i++)
+		{
+			if (s.getCompletedRequests() >= requests.size()) break;
+			//let the user know on the console that the thread is running
+			System.out.println(Thread.currentThread().getName() + " " + requests.get(i).getFloorNum() +  " Requested an elevator ");
+			s.scheduleElevator(requests.get(i));
+		}
+		try {
+			Thread.sleep(1000); // precautionary so this function doesn't exit before a thread is done work
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
