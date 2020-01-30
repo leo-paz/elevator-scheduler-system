@@ -7,6 +7,7 @@ import java.util.*;
 public class FloorSubsystem implements Runnable {
 	
 	private static String inputFile = "inputs/inputFile.txt";
+	private static int numOfRequestsNeeded;
 	
 	Scheduler s;
 	
@@ -49,6 +50,7 @@ public class FloorSubsystem implements Runnable {
 
 				FloorButtonRequest currRequest = new FloorButtonRequest(time, floorNum, direction, destinationFloor);
 				requests.add(currRequest);
+				numOfRequestsNeeded++;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -60,8 +62,9 @@ public class FloorSubsystem implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while(true) {
-			List<FloorButtonRequest> requests = readInputFile();
+		List<FloorButtonRequest> requests = readInputFile();
+		while(s.getCompletedRequests() < requests.size()) {
+			
 			ArrayList<FloorButtonRequest> r = (ArrayList<FloorButtonRequest>) requests;
 			for(int i = 0; i < r.size(); i++)
 			{
