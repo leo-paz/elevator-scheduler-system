@@ -15,10 +15,12 @@ public class Elevator implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		
+		//check if there are people to be serviced
 		while(true)
 		{
-			Object a = s.getElevator();
-			System.out.println(Thread.currentThread().getName() + "has been requested " + " and elevator goes to Floor ");
+			FloorButtonRequest a = s.getElevator();
+			System.out.println(Thread.currentThread().getName() + "has been requested " + " and elevator goes to Floor: " + a.getFloorNum());
+			System.out.println("User gets on the elevator and the elevator goes to Floor " + a.getDestinationFloor());
 		}
 		
 	}
