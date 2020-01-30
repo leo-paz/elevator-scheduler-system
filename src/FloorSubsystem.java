@@ -62,10 +62,13 @@ public class FloorSubsystem implements Runnable {
 		// TODO Auto-generated method stub
 		while(true) {
 			List<FloorButtonRequest> requests = readInputFile();
-			s.scheduleElevator(requests.get(0));
-	        
-			//let the user know on the console that the thread is running
-	        	System.out.println(Thread.currentThread().getName() + " Requested an elevator ");
+			ArrayList<FloorButtonRequest> r = (ArrayList<FloorButtonRequest>) requests;
+			for(int i = 0; i < r.size(); i++)
+			{
+				//let the user know on the console that the thread is running
+				System.out.println(Thread.currentThread().getName() + " " + r.get(i).getFloorNum() +  " Requested an elevator ");
+				s.scheduleElevator(r.get(i));
+			}	
 		}
 	}
 }
