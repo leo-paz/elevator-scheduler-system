@@ -3,11 +3,15 @@ import java.util.ArrayList;
 public class Scheduler extends Thread {
 	
 	ArrayList<FloorButtonRequest> elevatorWaitingList = null;
-	int count = 0; //count number of elevators
+	private int numOfRequestsCompleted = 0; //count number of elevators
 	
 	public ArrayList<FloorButtonRequest> getElevatorWaitingList()
 	{
 		return elevatorWaitingList;
+	}
+	
+	public int getCompletedRequests() {
+		return numOfRequestsCompleted;
 	}
 
 	/**
@@ -60,7 +64,8 @@ public class Scheduler extends Thread {
 	    } catch (InterruptedException e) {
 	    	System.out.println(e.getStackTrace());
 	    	return null;
-	    } 
+	    }
+	    numOfRequestsCompleted++;
 	    notifyAll();
 	    return item;
 	     
