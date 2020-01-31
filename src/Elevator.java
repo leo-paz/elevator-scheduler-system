@@ -1,11 +1,15 @@
 /**
- * Elevator gets requests from the floors to be serviced
- * @author sarahlamonica
+ * This is the Elevator class. It get elevator gets the requests from the floors to be serviced
+ * @version Iteration 1: Feb 1st 2020
  *
  */
 public class Elevator implements Runnable {
 	Scheduler s;
 	
+	/**
+	 * This is the constructor
+	 * @param s is a type Scheduler
+	 */
 	public Elevator(Scheduler s) {
 		this.s = s;
 	}
@@ -15,7 +19,7 @@ public class Elevator implements Runnable {
 		// TODO Auto-generated method stub
 		
 		while(true) {
-			FloorButtonRequest request = s.getElevator();
+			FloorButtonRequest request = s.getElevator(); //the destination floor the elevator is asked to get to
 			System.out.println(Thread.currentThread().getName() + " has been requested and elevator goes " + request.getDirection().toString() + " to floor " + request.getFloorNum() + " for pickup.");
 			System.out.println("The passenger gets on the elevator and goes to Floor " + request.getDestinationFloor());
 		}
