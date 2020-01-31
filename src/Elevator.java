@@ -18,7 +18,7 @@ public class Elevator implements Runnable {
 		while(true)
 		{
 			FloorButtonRequest a = s.getElevator();
-			System.out.println(Thread.currentThread().getName() + "has been requested " + " and elevator goes to Floor: " + a.getFloorNum());
+			System.out.println(Thread.currentThread().getName() + " has been requested " + " and elevator goes " + a.getDirection().toString() + " to Floor: " + a.getFloorNum());
 			System.out.println("User gets on the elevator and the elevator goes to Floor " + a.getDestinationFloor());
 		}
 		
