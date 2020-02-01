@@ -41,6 +41,13 @@ UML Sequence Diagram
 Breakdown of Responsibilities of Iteration One:
 -----------------------------------------------
 Sarah Lamonica
+- Source Code:
+       - Elevator.java
+       - Scheduler.java
+       - FloorSubsystem.java
+       - ProgramManager.java
+       - Review and modifications to other source code
+       - Documentation
 
 Leonardo Paz:
 - Source code:
