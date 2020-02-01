@@ -22,7 +22,7 @@ FloorButtonRequest.java
 - This is the FloorButtonRequest class which has setter and getter methods for the elevator  system as well as the up and down buttons pertaining to the floors.
  
 ProgramManager.java
-- This is the main method of the project. That create all the instance required for the Elevator system to function.  
+- This is the main method of the project. That create all the instance required for the Elevator system to function. Since threads were used for implemetation, the call to the elevator are random. 
 
 Direction.java
 - This is the direction class that represents the direction of elevator traveling. It is a enum, hence the UP and DOWN values are constant.
