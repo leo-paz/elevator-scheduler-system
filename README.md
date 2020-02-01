@@ -42,7 +42,11 @@ Breakdown of Responsibilities of Iteration One:
 -----------------------------------------------
 Sarah Lamonica
 
-Leo
+Leonardo Paz:
+- Source code:
+     - FloorSubsystem.java
+     - Scheduler.java
+- Review and modifications to other pieces of soure code
 
 Mounica Pillarisetty:
 - Source code:
