@@ -1,14 +1,13 @@
-ELEVATOR PROJECT
-----------------
+ELEVATOR PROJECT - Iteration One
+--------------------------------
 
 How to run the program?
 
 Run the ProgramManager.java and see the results in the console. For the test cases run all three
 JUint files.
 
-Source Code  Includes:
+Source Code Includes:
 ---------------------
-
 Scheduler.java
 - The Scheduler class that extends Thread. This class allows the elevator to uses the input to assign the floor to the elevator while it also coordinates with the floor buttons.
 
@@ -29,23 +28,27 @@ Direction.java
 
 Test Included:
 --------------
-
 testScheduler.java
 testFloorSubsystem.java
 testFloorButtonRequest.java
 
 UML Diagrams:
 --------------
-
 UML Class Diagram
 UML Sequence Diagram
 
-Breakdown of Responsibilities:
-------------------------------
-
+Breakdown of Responsibilities of Iteration One:
+-----------------------------------------------
 Sarah Lamonica
-Mounica
+
 Leo
+
+Mounica Pillarisetty:
+- Source code:
+     - FloorSubsystem.java
+     - FloorButtonRequest.java
+     - Direction.java
+- Review and modified source code to other classes
 
 Shoana Sharma:
 - Documentation for all the source code
@@ -54,8 +57,7 @@ Shoana Sharma:
 - testScheduler.java class
 - README file
 
-
-Fatima Hash:
+Fatima Hashi:
 - UML Sequence Diagram
 - testFloorSubsystem.java
 - testFloorButtonRequest.java
