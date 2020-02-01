@@ -1,3 +1,9 @@
+/Direction.class
+/Elevator.class
+/FloorButtonRequest.class
+/FloorSubsystem.class
+/ProgramManager.class
+/Scheduler.class
 /testDirection.class
 /testElevator.class
 /testScheduler.class
