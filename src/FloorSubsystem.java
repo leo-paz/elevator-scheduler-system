@@ -29,7 +29,7 @@ public class FloorSubsystem implements Runnable {
 	 * @param s is a type string 
 	 * @return the direction at which the elevator is traveling
 	 */
-	private static Direction getDirection(String s) {
+	public static Direction getDirection(String s) {
 		switch (s.toLowerCase()) {
 		case "up":
 			return Direction.UP;

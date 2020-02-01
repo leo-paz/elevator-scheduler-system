@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * This is the testSchduler class that tests all the relevant methods of 
  * the scheduler class.
- * @verson Iteration 1: Feb 1st, 2020
+ * @version Iteration 1: Feb 1st, 2020
  *
  */
 public class testScheduler {
