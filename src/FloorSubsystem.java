@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,9 +50,10 @@ public class FloorSubsystem implements Runnable {
 	public static List<FloorButtonRequest> readInputFile() {
 		FileReader input = null;
 		List<FloorButtonRequest> requests = new ArrayList<FloorButtonRequest>();
+		File f = new File(inputFile);
 		
 		try {
-			input = new FileReader(inputFile); //file containing all the data captured
+			input = new FileReader(f.getAbsolutePath()); //file containing all the data captured
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
