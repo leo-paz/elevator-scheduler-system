@@ -46,7 +46,7 @@ public class FloorSubsystem implements Runnable {
 	 * @return a list of all the requests made by gathering the information from the 
 	 * text file 
 	 */
-	private static List<FloorButtonRequest> readInputFile() {
+	public static List<FloorButtonRequest> readInputFile() {
 		FileReader input = null;
 		List<FloorButtonRequest> requests = new ArrayList<FloorButtonRequest>();
 		
