@@ -19,9 +19,9 @@ public class Elevator implements Runnable {
 		// TODO Auto-generated method stub
 		
 		while(true) {
-			FloorButtonRequest request = s.getElevator(); //the destination floor the elevator is asked to get to
-			System.out.println(Thread.currentThread().getName() + " has been requested and elevator goes " + request.getDirection().toString() + " to floor " + request.getFloorNum() + " for pickup.");
-			System.out.println("The passenger gets on the elevator and goes to Floor " + request.getDestinationFloor());
+			FloorButtonRequest request = s.getElevator();//the destination floor the elevator is asked to get to
+			System.out.println(Thread.currentThread().getName() + " has been requested and elevator goes to floor " + request.getFloorNum() + " for pickup.");
+			System.out.println("The passenger gets on the elevator at floor " + request.getFloorNum() + " and goes " + request.getDirection().toString() + " to Floor " + request.getDestinationFloor());
 		}
 		
 	}
