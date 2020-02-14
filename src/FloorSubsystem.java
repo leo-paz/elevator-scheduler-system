@@ -13,7 +13,6 @@ import java.util.*;
 public class FloorSubsystem implements Runnable {
 	
 	private static String inputFile = "inputs/inputFile.txt";
-	private static int numOfRequestsNeeded;
 	
 	Scheduler s;
 	
@@ -70,10 +69,9 @@ public class FloorSubsystem implements Runnable {
 				String floorNum = info[1];
 				Direction direction = getDirection(info[2]);
 				String destinationFloor = info[3];
-
-				FloorButtonRequest currRequest = new FloorButtonRequest(time, floorNum, direction, destinationFloor);
+				
+				FloorButtonRequest currRequest = new FloorButtonRequest(time, floorNum, direction, destinationFloor, false);
 				requests.add(currRequest); // add the request to the list
-				numOfRequestsNeeded++;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -92,6 +90,8 @@ public class FloorSubsystem implements Runnable {
 			if (s.getCompletedRequests() >= requests.size()) break;
 			//let the user know on the console that the thread is running
 			System.out.println(Thread.currentThread().getName() + " " + requests.get(i).getFloorNum() +  " Requested an elevator ");
+			// if last request set the last request flag
+			if( i == requests.size() - 1) requests.get(i).setIsLastRequest();
 			s.scheduleElevator(requests.get(i));
 		}
 		try {

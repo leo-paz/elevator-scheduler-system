@@ -15,16 +15,14 @@ public class MoveState extends State {
 	@Override
 	public void moveElevator() {
 		// TODO Auto-generated method stub
-		elevator.setElevatorMoving();
-		System.out.println("Elevator state: Moving");
-		
+		elevator.setState(new StopState(elevator));
 		try {
-			Thread.sleep(FloorToFloorTime);
+			System.out.println("Doors are opening and passenger is entering");
+			Thread.sleep(OpenDoorTime);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }
