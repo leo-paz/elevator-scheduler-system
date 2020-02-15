@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 public class EndState extends State {
 
 	public EndState(Elevator ele) {
@@ -17,5 +18,8 @@ public class EndState extends State {
 		// TODO Auto-generated method stub
 		
 	}
+=======
+public class EndState {
+>>>>>>> a62a93a... Updated endstate
 
 }

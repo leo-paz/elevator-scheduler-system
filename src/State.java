@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 public abstract class State {
 	
 	// use our values we calculated for the iteration 0
@@ -14,5 +15,8 @@ public abstract class State {
 
     public abstract void moveDoor();
     public abstract void moveElevator();
+=======
+public class State {
+>>>>>>> a62a93a... Updated endstate
 
 }
