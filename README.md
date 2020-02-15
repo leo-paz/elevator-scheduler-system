@@ -44,6 +44,8 @@ Test Included:
 testScheduler.java
 testFloorSubsystem.java
 testFloorButtonRequest.java
+testEndState.java
+testMoveState.java
 
 UML Diagrams:
 --------------
@@ -51,7 +53,7 @@ UML Class Diagram
 UML Sequence Diagram
 UML State Diagram
 
-Breakdown of Responsibilities of Iteration One:
+Breakdown of Responsibilities of Iteration Two:
 -----------------------------------------------
 Sarah Lamonica
 - Source Code:
@@ -80,3 +82,6 @@ Shoana Sharma:
 - UML State Diagram
 
 Fatima Hashi:
+- Reviewed and modified source
+- Test cases
+- UML Sequence Diagram
