@@ -5,7 +5,7 @@ GitHub Link: https://github.com/Truzian/elevator-scheduler-system
 How to run the program?
 
 Run the ProgramManager.java and see the results in the console. For the test cases run all three
-JUint files.
+JUint files to run them use Java 13 on Eclipse. 
 
 Source Code Includes:
 ---------------------
@@ -74,5 +74,9 @@ Mounica Pillarisetty:
 - ReadME
 
 Shoana Sharma:
+- Test cases
+- Reviewed and modified source code
+- READMe
+- UML State Diagram
 
 Fatima Hashi:
