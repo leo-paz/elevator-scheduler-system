@@ -1,9 +1,13 @@
-
+/**
+ * MoveState class describes the state of the elevator and doors in motion
+ * either of the doors or between floors.
+ * @version Iteration 2: Feb 14th 2020 
+ *
+ */
 public class StopState extends State {
 
 	public StopState(Elevator ele) {
 		super(ele);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
