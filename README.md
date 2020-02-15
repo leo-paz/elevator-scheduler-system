@@ -1,4 +1,4 @@
-ELEVATOR PROJECT - Iteration One
+ELEVATOR PROJECT - Iteration Two
 --------------------------------
 GitHub Link: https://github.com/Truzian/elevator-scheduler-system
 
@@ -27,6 +27,18 @@ ProgramManager.java
 Direction.java
 - This is the direction class that represents the direction of elevator traveling. It is a enum, hence the UP and DOWN values are constant.
 
+State.java
+- This is State class where it describes the state of the elevator system. It describes when the elevator is starting, moving, stopping and when the doors are opening and closing. It also describes whether the elevator has reached its destination, stopped at a floor and opened its doors. This is the superclass to the rest of the state classes. 
+
+MoveState.java
+- This is a subclass of State describing the motion behaviour of the elevator and its doors. It describes when the doors are opening and when passengers are entering. 
+
+StopState.java
+- This is a subclass of State describing the motion behaviour of the elevator between floors. It describes where the elevator is heading to stop and let passengers in.
+
+EndState.java
+- This is a subclass of State describing the final state of the elevator, when there is no more movement between floors and of the doors. 
+
 Test Included:
 --------------
 testScheduler.java
@@ -37,6 +49,7 @@ UML Diagrams:
 --------------
 UML Class Diagram
 UML Sequence Diagram
+UML State Diagram
 
 Breakdown of Responsibilities of Iteration One:
 -----------------------------------------------
@@ -45,21 +58,10 @@ Sarah Lamonica
 Leo
 
 Mounica Pillarisetty:
-- Source code:
-     - FloorSubsystem.java
-     - FloorButtonRequest.java
-     - Direction.java
-- Review and modified source code to other classes
+- UML Class Diagram 
+- Reviewed and modified code
+- ReadME
 
 Shoana Sharma:
-- Documentation for all the source code
-- UML Class Diagram
-- Review/Modifications to source code
-- testScheduler.java class
-- README file
 
 Fatima Hashi:
-- UML Sequence Diagram
-- testFloorSubsystem.java
-- testFloorButtonRequest.java
-- README file
