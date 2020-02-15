@@ -1,8 +1,7 @@
 /**
- * MoveState class describes the state of the elevator and doors in motion
- * either of the doors or between floors.
+ * StopState describes the motion behaviour of the elevator between floors.
+ * It describes where the elevator is heading to stop and open doors to let passengers in.
  * @version Iteration 2: Feb 14th 2020 
- *
  */
 public class StopState extends State {
 
@@ -13,7 +12,6 @@ public class StopState extends State {
 	@Override
 	public void moveDoor() {
 		// TODO Auto-generated method stub
-		
 		try {
 			System.out.println("Doors are closing");
 			Thread.sleep(CloseDoorTime);
