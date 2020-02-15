@@ -9,7 +9,7 @@ public class EndState extends State {
 	@Override
 	public void moveDoor() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("All requests processed!");
 	}
 
 	@Override
