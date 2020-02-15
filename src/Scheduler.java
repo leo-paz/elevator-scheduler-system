@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * This is the Scheduler class that extends Thread. This class allows the elevator to 
  * uses the input to assign the floor to the elevator while it also
  * coordinates with the floor buttons.
- * @version Iteration 1: Feb 1st 2020 
+ * @version Iteration 2: Feb 15th 2020 
  * 
  */
 public class Scheduler extends Thread {

@@ -1,7 +1,7 @@
 /**
  * This is the main method of the project. That create all the instance required
  * for the Elevator system to function.  
- * @version Iteration 1: Feb 1st 2020
+ * @version Iteration 2: Feb 15th 2020
  * 
  */
 public class ProgramManager {
