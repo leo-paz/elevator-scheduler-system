@@ -87,6 +87,7 @@ public class Elevator implements Runnable {
 			if(request.isLastRequest()) {
 				setState(new EndState(this));
 				currentState.moveDoor();
+				currentState.moveElevator();
 			}
 		}
 		
