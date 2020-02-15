@@ -2,7 +2,7 @@
  * This is the FloorButtonRequest class which has setter and getter methods for the elevator 
  * system as well as the up and down buttons pertaining to the floors.
  * 
- * @version Iteration 1: Feb 1st 2020
+ * @version Iteration 2: Feb 15th 2020
  *
  */
 public class FloorButtonRequest {

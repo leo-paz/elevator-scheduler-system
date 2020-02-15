@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * This is the FloorSubsystem class that gets the direction of the elevator 
  * traveling to, time it will take and the destination floor.
- * @version Iteration 1: Feb 1st 2020
+ * @version Iteration 2: Feb 15th 2020
  *
  */
 public class FloorSubsystem implements Runnable {
