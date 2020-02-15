@@ -21,7 +21,6 @@ public abstract class State {
 
 	public abstract void moveDoor();
     public abstract void moveElevator();
-
-    
+  
 
 }

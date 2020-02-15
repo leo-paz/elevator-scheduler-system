@@ -24,7 +24,7 @@ public class EndState extends State {
 	@Override
 	public void moveElevator() {
 		try {
-			System.out.println("Elevator completed trip.");
+			System.out.println("Elevator completed trips.");
 			Thread.sleep(CloseDoorTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
