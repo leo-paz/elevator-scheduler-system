@@ -4,6 +4,12 @@ GitHub Link: https://github.com/Truzian/elevator-scheduler-system
 
 How to run the program?
 
+Command Line:
+
+1. Navigate to src folder
+2. javac ProgramManager.java
+3. java ProgramManager
+
 Run the ProgramManager.java and see the results in the console. For the test cases run all three
 JUint files to run them use Java 13 on Eclipse. 
 
@@ -57,18 +63,19 @@ Breakdown of Responsibilities of Iteration Two:
 -----------------------------------------------
 Sarah Lamonica
 - Source Code:
-       - Elevator.java
-       - Scheduler.java
-       - FloorSubsystem.java
-       - ProgramManager.java
-       - Review and modifications to other source code
-       - Documentation
+	- State.java
+	- MoveState.java
+	- Elevator.java
+- Review and modifications to other pieces of source code
+- Documentation
 
 Leonardo Paz:
 - Source code:
-     - FloorSubsystem.java
-     - Scheduler.java
-- Review and modifications to other pieces of soure code
+     - Elevator.java
+     - EndState.java
+     - StopState.java
+- Review and modifications to other pieces of source code
+- Documentation
 
 Mounica Pillarisetty:
 - UML Class Diagram 

@@ -9,12 +9,19 @@ import org.junit.Test;
  * @version Iteration 2: Feb 15th 2020 
  *
  */
-class testEndCase {
+public class testEndCase {
 
 	Elevator e;
 	EndState es = new EndState(e);
 	FloorButtonRequest fbs;
+	Scheduler s = new Scheduler();
 	//State 
+	
+	public testEndCase()
+	{
+		fbs = new FloorButtonRequest("5:00", "6", Direction.UP, "5", true);
+		e = new Elevator(s);
+	}
 	
 	@Test
 	/**
