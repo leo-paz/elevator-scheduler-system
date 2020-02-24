@@ -10,10 +10,10 @@ public abstract class State {
 	
 	// use our values we calculated for the iteration 0 for the time taken to for
 	// all required services
-	protected static final long FloorToFloorTime = 3000;
-	protected static final long OpenDoorTime = 1350;
-	protected static final long HoldDoorTime = 5000;
-	protected static final long CloseDoorTime = 1650;
+	protected static final long FloorToFloorTime = 3500;
+	protected static final long OpenDoorTime = 1300;
+	protected static final long HoldDoorTime = 4500;
+	protected static final long CloseDoorTime = 1600;
     protected Elevator elevator;
 
     /**
