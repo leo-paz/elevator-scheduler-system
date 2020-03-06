@@ -94,7 +94,7 @@ public class Scheduler implements Runnable {
 		int currentChosenElevator = 0;
 		String s = "";
 		for(int i = 0; i < this.elevators.length; i++) {
-			distance =  Integer.parseInt(PackageInfo[1]) - elevators[i].getCurrentFloor();
+			distance =  Integer.parseInt(PackageInfo[1]) - elevators[i].getFloor();
 			if( Math.abs(distance) < Math.abs(minimumDistance)) {
 				minimumDistance = distance;
 				currentChosenElevator = i;
