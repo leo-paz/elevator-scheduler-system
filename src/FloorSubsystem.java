@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * This is the FloorSubsystem class that gets the direction of the elevator 
  * traveling to, time it will take and the destination floor.
- * @version Iteration 2: Feb 15th 2020
+ * @version Iteration 3: March 7, 2020
  *
  */
 public class FloorSubsystem implements Runnable {
@@ -88,37 +88,18 @@ public class FloorSubsystem implements Runnable {
 	
 	@Override
 	public void run() {
-		//Not needed
-		// TODO Auto-generated method stub
-		/*ArrayList<FloorButtonRequest> requests = (ArrayList<FloorButtonRequest>) readInputFile();
-			
-		for(int i = 0; i < requests.size(); i++) {
-			//if (s.getCompletedRequests() >= requests.size()) break;
-			//let the user know on the console that the thread is running
-			System.out.println(Thread.currentThread().getName() + " " + requests.get(i).getFloorNum() +  " Requested an elevator ");
-			// if last request set the last request flag
-			if( i == requests.size() - 1) requests.get(i).setIsLastRequest();
-			//s.scheduleElevator(requests.get(i));
-		}
-		try {
-			Thread.sleep(1000); // pre-cautionary so this function doesn't exit before a thread is done work
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		//required as implements runnable
+		
 	}
 
 	
 	public static void main(String args[]) {
-		//Scheduler scheduler = new Scheduler();
 		Thread sThread = new Thread(new SendRequest());
 		Thread rThread = new Thread(new ReceiveConfirmation());
 		
 		sThread.start();
 		rThread.start();
 		
-		//thread.start();
 	
 	}
 }

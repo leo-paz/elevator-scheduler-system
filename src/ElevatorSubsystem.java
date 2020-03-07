@@ -1,4 +1,10 @@
 
+/**
+ * This is the ElevatorSubSystem class that is creating 4 threads for 4 different 
+ * elevators.
+ * @version Iteration 3: March 7, 2020
+ *
+ */
 public class ElevatorSubsystem {
 
 	public static void main(String[] args) {

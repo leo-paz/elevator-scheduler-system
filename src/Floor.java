@@ -1,3 +1,9 @@
+/**
+ * This is the floor class that has the getter and setter method for the 
+ * floor user desires to go to and access the current floor
+ * @aversion March 7, 2020
+ *
+ */
 public class Floor {
 	private int floorNumber;
 	/**

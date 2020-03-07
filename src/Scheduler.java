@@ -1,13 +1,11 @@
 /**
- * This is the Scheduler class that extends Thread. This class allows the elevator to 
- * uses the input to assign the floor to the elevator while it also
+ * This is the Scheduler class that implements runnable. This class schedules communication between 
+ * the elevator and the user requests using datagram packets. It sends a message to the elevator as
+ * soon as user requests(floor subsystem) an elevator and choose its desired floor.The elevator 
+ * receives these requests through the scheduler. 
  * coordinates with the floor buttons.
- * @version Iteration 2: Feb 15th 2020 
+ * @version Iteration 3: March 7th 2020 
  * 
- */
-/*
- * Scheduler class receive message from floor subsystem and manages
- * motor which moves elevator 
  */
 
 import java.io.IOException;

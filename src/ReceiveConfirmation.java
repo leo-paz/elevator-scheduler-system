@@ -2,7 +2,12 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-
+/**
+ * This is the ReceiveConfirmation class that receives a request using datagram packets after
+ * a request has been sent. 
+ * @author Iteration 3: March 7, 2020
+ *
+ */
 public class ReceiveConfirmation implements Runnable{
 
 	
@@ -11,9 +16,9 @@ public class ReceiveConfirmation implements Runnable{
 	int currentFloor,targetFloor, userChoice ;
     String time, direction;
     
-	  /*
-     * constructor 
-     */
+	 /**
+	  * This is the constructor class
+	  */
 	public ReceiveConfirmation() {
 		
 	    
