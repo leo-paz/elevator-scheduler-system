@@ -3,6 +3,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.util.*;
 /**
  * This is the FloorSubsystem class that gets the direction of the elevator 
@@ -14,6 +17,9 @@ public class FloorSubsystem implements Runnable {
 	
 	private static String inputFile = "inputs/inputFile.txt";
 	
+	DatagramPacket sendPacket, receivePacket;
+	DatagramSocket socket;
+	
 	Scheduler s;
 	
 	/**
@@ -21,6 +27,13 @@ public class FloorSubsystem implements Runnable {
 	 * @param s is a type scheduler
 	 */
 	public FloorSubsystem(Scheduler s) {
+		try {
+			socket = new DatagramSocket();			
+		}catch(SocketException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
 		this.s = s;
 	}
 
@@ -85,9 +98,8 @@ public class FloorSubsystem implements Runnable {
 		// TODO Auto-generated method stub
 		ArrayList<FloorButtonRequest> requests = (ArrayList<FloorButtonRequest>) readInputFile();
 			
-		for(int i = 0; i < requests.size(); i++)
-		{
-			if (s.getCompletedRequests() >= requests.size()) break;
+		for(int i = 0; i < requests.size(); i++) {
+			//if (s.getCompletedRequests() >= requests.size()) break;
 			//let the user know on the console that the thread is running
 			System.out.println(Thread.currentThread().getName() + " " + requests.get(i).getFloorNum() +  " Requested an elevator ");
 			// if last request set the last request flag
@@ -100,5 +112,15 @@ public class FloorSubsystem implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	
+	public static void main(String args[]) {
+		Scheduler scheduler = new Scheduler();
+		FloorSubsystem floor = new FloorSubsystem(scheduler);
+		Thread thread = new Thread(floor);
+		
+		thread.start();
+	
 	}
 }
