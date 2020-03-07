@@ -30,6 +30,15 @@ public class Elevator implements Runnable {
 	 * This is the constructor
 	 * @param s is a type Scheduler
 	 */
+	public int getElevatorNum()
+	{
+		return elevatorNumber;
+	}
+	public int getElevatorPortNum()
+	{
+		return portNumber;
+	}
+
 	public Elevator(int currentFloor, int elevatorNumber, int portNumber) {
 		this.currentFloor = currentFloor;
 		this.elevatorNumber = elevatorNumber;
@@ -59,19 +68,11 @@ public class Elevator implements Runnable {
 	public void setCurrentFloor(int i)
 	{
 		currentFloor = i; 
-		currentState.moveDoor();
-		currentState.moveElevator();
+		//currentState.moveDoor();
+		//currentState.moveElevator();
 	}
 	
-	/**
-	 * This is to set the currentFloor the elevator is on
-	 * @param floor The floor to set the current floor too
-	 */
-	public void setFloor(int floor) {
-		currentFloor = floor;
-		currentState.moveDoor();
-		currentState.moveElevator();
-	}
+
 	
 	/**
 	 * Returns current floor the elevator is on
@@ -150,19 +151,21 @@ public class Elevator implements Runnable {
 	/*
 	 * send a packet which contains a message 
 	 */
-	public void sendMsg(byte[] data, int len, InetAddress address, DatagramPacket packet, DatagramSocket socket, int port) throws IOException {
+	public void sendMsg(byte[] data, int len, InetAddress address, DatagramPacket packet, DatagramSocket sendReceiveSocket, int port) throws IOException {
 
-		System.out.println("--------------------------------");
-		System.out.println(Thread.currentThread().getName() + ": sending a packet containing(String): " + new String(data));
-		try {
-			sendPacket = new DatagramPacket(data, len, address, port);
-			sendReceiveSocket.send(sendPacket);
-			System.out.println("Send Successfully");
-		} catch (UnknownHostException e) {
-			System.out.println("IO Exception: likely: " + "Send Socket Timed Out.\n" + e);
-			e.printStackTrace();
-			System.exit(1);
-		}
+		
+
+			System.out.println("--------------------------------");
+			System.out.println(Thread.currentThread().getName() + ": sending a packet containing(String): " + new String(data));
+			try {
+				sendPacket = new DatagramPacket(data, len, address, port);
+				sendReceiveSocket.send(sendPacket);
+				System.out.println("Send Successfully");
+			} catch (UnknownHostException e) {
+				System.out.println("IO Exception: likely: " + "Send Socket Timed Out.\n" + e);
+				e.printStackTrace();
+				System.exit(1);
+			}
 
 	}
 	
@@ -171,17 +174,18 @@ public class Elevator implements Runnable {
 	{
 		//System.out.println("Elevator is waiting to be requested.");
 		//byte [] data = receiveMsg(receiveSocket);
-		System.out.println("Elevator is going to a floor");
+		System.out.println("Elevator is going to floor "  );
 		//int destFloor = data[1];
 		
 		//byte array should contain 0 - REQUESTED FLOOR 1 - Destination floor.
 		//floorsToService.add(destFloor);
 		
-		currentState.moveElevator();
+	/*	currentState.moveElevator();
 		currentState.moveDoor();
 		
 		System.out.println("The elevator has received a request from a floor and is going to the floor");
 		arriveAtFloor();
+		*/
 		//state = moving
 		// string = going to floor 
 		//when the data is received, go to the floor and pick up the passenger.
@@ -190,7 +194,7 @@ public class Elevator implements Runnable {
 	public void deliverPassenger()
 	{
 		System.out.println("The elevator has received a request from a floor and is delivering the passenger");
-		arriveAtFloor();
+		//arriveAtFloor();
 		
 		//when the passenger is picked up, go to the desired floor and deliver the passenger
 	}
@@ -218,6 +222,7 @@ public class Elevator implements Runnable {
 			try {
 				newSocket = new DatagramSocket();
 				DatagramPacket sendPacket = null;
+				
 				String s = "Done";
 				byte[] result = s.getBytes();
 				sendMsg(result, result.length, receivePacket.getAddress(), sendPacket, newSocket, receivePacket.getPort());
