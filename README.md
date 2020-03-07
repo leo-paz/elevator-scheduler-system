@@ -1,31 +1,51 @@
-ELEVATOR PROJECT - Iteration Two
---------------------------------
+ELEVATOR PROJECT - Iteration Three
+-----------------------------------
 GitHub Link: https://github.com/Truzian/elevator-scheduler-system
 
 How to run the program?
+-----------------------
+Command Line:
 
-Run the ProgramManager.java and see the results in the console. For the test cases run all three
-JUint files.
+1. Navigate to src folder
+2. javac ElevatorSystem.java
+3. javac FloorSystem.java
+3. javac Scheduler.java
+
+Run the mentioned programs on three different consoles and see the results. For the test cases run all three
+JUint files on Java 13 on Eclipse. 
+
+Reflection on how concurrency control at the scheduler changed from Iteration 2 to Iteration 3.
+---------------------
+In Interation 2, threads were implemented to concurrently schedule tasks between the floor calls and the user calls inside the elevator. In Iteration 3, UDP was used to create Datagram packets to send and receive messages throug the schduler to the floor and the elevator. To make sure that the elevator closest to the user requested floor would be recieving them, the logic was implemented using the datagram packets as well.
 
 Source Code Includes:
 ---------------------
+Direction.java
+- This is the direction class that represents the direction of elevator traveling. It is a enum, hence the UP and DOWN values are constant.
+
+ElevatorSubsystem.java
+- This is the ElevatorSubSystem class that is creating 4 threads for 4 different elevators.
+
+Elevator.java
+- This is the Elevator class. It get elevator gets the requests from the floors to be serviced.
+
 Scheduler.java
 - The Scheduler class that extends Thread. This class allows the elevator to uses the input to assign the floor to the elevator while it also coordinates with the floor buttons.
 
 FloorSubsystem.java
 - This is the FloorSubsystem class that gets the direction of the elevator traveling to, time it will take and the destination floor.
 
-Elevator.java
-- This is the Elevator class. It get elevator gets the requests from the floors to be serviced.
+Floor.java
+- This is the floor class that has the getter and setter method for the floor user desires to go to and access the current floor.
 
 FloorButtonRequest.java
-- This is the FloorButtonRequest class which has setter and getter methods for the elevator  system as well as the up and down buttons pertaining to the floors.
+- This is the FloorButtonRequest class which has setter and getter methods for the elevator system as well as the up and down buttons pertaining to the floors.
  
-ProgramManager.java
-- This is the main method of the project. That create all the instance required for the Elevator system to function. Since threads were used for implemetation, the call to the elevator are random. 
+ReceiveConfirmation
+- This is the ReceiveConfirmation class that receives a request using datagram packets after a request has been sent. 
 
-Direction.java
-- This is the direction class that represents the direction of elevator traveling. It is a enum, hence the UP and DOWN values are constant.
+Sendrequest
+- This is the SendRequest Class that sends the request to the scheduler. The elevator direction button, the user input floor all are sent though this class.
 
 State.java
 - This is State class where it describes the state of the elevator system. It describes when the elevator is starting, moving, stopping and when the doors are opening and closing. It also describes whether the elevator has reached its destination, stopped at a floor and opened its doors. This is the superclass to the rest of the state classes. 
@@ -42,20 +62,31 @@ EndState.java
 Test Included:
 --------------
 testScheduler.java
-testFloorSubsystem.java
 testFloorButtonRequest.java
+
 
 UML Diagrams:
 --------------
 UML Class Diagram
 UML Sequence Diagram
-UML State Diagram
 
-Breakdown of Responsibilities of Iteration One:
+Breakdown of Responsibilities of Iteration Two:
 -----------------------------------------------
 Sarah Lamonica
+- Source Code:
+	- State.java
+	- MoveState.java
+	- Elevator.java
+- Review and modifications to other pieces of source code
+- Documentation
 
-Leo
+Leonardo Paz:
+- Source code:
+     - Elevator.java
+     - EndState.java
+     - StopState.java
+- Review and modifications to other pieces of source code
+- Documentation
 
 Mounica Pillarisetty:
 - UML Class Diagram 
@@ -63,5 +94,12 @@ Mounica Pillarisetty:
 - ReadME
 
 Shoana Sharma:
+- Reviewed and modified source code
+- Java Documentation
+- README
+- UML Class Diagram
 
 Fatima Hashi:
+- Reviewed and modified source
+- Test cases
+- UML Sequence Diagram

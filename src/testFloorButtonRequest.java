@@ -13,7 +13,7 @@ public class testFloorButtonRequest {
 
 	private String time, des, floorNum ;  
 	private Direction dir;
-	FloorButtonRequest FBR = new FloorButtonRequest(time, floorNum, dir, des);
+	FloorButtonRequest FBR = new FloorButtonRequest(time, floorNum, dir, des, false);
 	
 	/**
 	 * This test verifies the getter method getTime, 
