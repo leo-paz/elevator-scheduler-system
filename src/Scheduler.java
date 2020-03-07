@@ -36,10 +36,10 @@ public class Scheduler implements Runnable {
 		elevatorSockets = new DatagramSocket[4];
 		
 		for(int i = 0; i < this.elevators.length; i++) {
-			this.portNumber[i] = 1000 + i; 
+			this.portNumber[i] = 2000 + i; 
 			this.elevators[i] = new Elevator(1, i, portNumber[i]);
 			try {
-				this.elevatorSockets[i] = new DatagramSocket(portNumber[i]);
+				this.elevatorSockets[i] = new DatagramSocket();//portNumber[i]);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
