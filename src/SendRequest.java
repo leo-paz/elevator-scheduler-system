@@ -105,7 +105,9 @@ public class SendRequest implements Runnable{
 	public void setTime(String a) {
 		time = a;
 	}
-	
+	public String getTime() {
+		return time;
+	}
 	/*
 	 * set the target floor
 	 * @param floor : a integer of target floor
@@ -147,8 +149,8 @@ public class SendRequest implements Runnable{
 		List<FloorButtonRequest> list = readInputFile();
 		
 		int acurrent , atarget;
-		String time = "0", direction = "", error = "";
-		
+		String time = "0", error = "null";
+		Direction direction;
 		
 		
 		for(int i =0; i<list.size();i++) {
@@ -156,12 +158,16 @@ public class SendRequest implements Runnable{
 			
 			
 			this.setTime(r.getTime());
+			time = r.getTime();
 			this.setFloor(Integer.parseInt(r.getFloorNum()));
+			acurrent = Integer.parseInt(r.getFloorNum());
 			this.setTargetFloor(Integer.parseInt(r.getDestinationFloor()));
+			atarget = Integer.parseInt(r.getDestinationFloor());
 			this.setDirection(r.getDirection());
+			direction = r.getDirection();
 			//this.setError(error);
 		
-		String a = time + "\t" + currentFloor + "\t" + direction + "\t" + targetFloor + "\t" + error;
+		String a = time + "\t" + currentFloor + "\t" + direction.toString() + "\t" + targetFloor + "\t" + error;
 		
 		byte[] msg = a.getBytes();
 		 
