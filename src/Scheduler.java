@@ -132,8 +132,9 @@ public class Scheduler implements Runnable {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		elevators[chosenElevator].setCurrentFloor(Integer.parseInt(PackageInfo[1]));
-		
+		int f = Integer.parseInt(PackageInfo[1]);
+		System.out.println("Floor: " + elevators[chosenElevator].getFloor() + " Num: " + elevators[chosenElevator].getElevatorNum() + " Port: " + elevators[chosenElevator].getElevatorPortNum() );
+		elevators[chosenElevator].setCurrentFloor(f);
 		System.out.println("Scheduler sending package to ElevatorSubsystem ");
 		System.out.println("To " + sendElevatorPacket.getAddress() + ", port: " + sendElevatorPacket.getPort());
 		System.out.println("Package contains: " + new String(sendElevatorPacket.getData()));
