@@ -20,21 +20,14 @@ public class FloorSubsystem implements Runnable {
 	DatagramPacket sendPacket, receivePacket;
 	DatagramSocket socket;
 	
-	Scheduler s;
+	//Scheduler s;
 	
 	/**
 	 * This is the constructor
 	 * @param s is a type scheduler
 	 */
-	public FloorSubsystem(Scheduler s) {
-		try {
-			socket = new DatagramSocket();			
-		}catch(SocketException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		
-		this.s = s;
+	public FloorSubsystem() {
+
 	}
 
 	/**
@@ -95,8 +88,9 @@ public class FloorSubsystem implements Runnable {
 	
 	@Override
 	public void run() {
+		//Not needed
 		// TODO Auto-generated method stub
-		ArrayList<FloorButtonRequest> requests = (ArrayList<FloorButtonRequest>) readInputFile();
+		/*ArrayList<FloorButtonRequest> requests = (ArrayList<FloorButtonRequest>) readInputFile();
 			
 		for(int i = 0; i < requests.size(); i++) {
 			//if (s.getCompletedRequests() >= requests.size()) break;
@@ -104,7 +98,7 @@ public class FloorSubsystem implements Runnable {
 			System.out.println(Thread.currentThread().getName() + " " + requests.get(i).getFloorNum() +  " Requested an elevator ");
 			// if last request set the last request flag
 			if( i == requests.size() - 1) requests.get(i).setIsLastRequest();
-			s.scheduleElevator(requests.get(i));
+			//s.scheduleElevator(requests.get(i));
 		}
 		try {
 			Thread.sleep(1000); // pre-cautionary so this function doesn't exit before a thread is done work
@@ -112,15 +106,19 @@ public class FloorSubsystem implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	
 	public static void main(String args[]) {
-		Scheduler scheduler = new Scheduler();
-		FloorSubsystem floor = new FloorSubsystem(scheduler);
-		Thread thread = new Thread(floor);
+		//Scheduler scheduler = new Scheduler();
+		Thread sThread = new Thread(new SendRequest());
+		Thread rThread = new Thread(new ReceiveConfirmation());
 		
-		thread.start();
+		sThread.start();
+		rThread.start();
+		
+		//thread.start();
 	
 	}
 }
