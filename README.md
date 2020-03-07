@@ -71,7 +71,7 @@ UML Diagrams:
 UML Class Diagram
 UML Sequence Diagram
 
-Breakdown of Responsibilities of Iteration Two:
+Breakdown of Responsibilities of Iteration Three:
 -----------------------------------------------
 Sarah Lamonica
 - Source Code:
@@ -83,9 +83,7 @@ Sarah Lamonica
 
 Leonardo Paz:
 - Source code:
-     - Elevator.java
-     - EndState.java
-     - StopState.java
+     - Scheduler.java
 - Review and modifications to other pieces of source code
 - Documentation
 
@@ -105,3 +103,4 @@ Fatima Hashi:
 - Reviewed and modified source
 - Test cases
 - UML Sequence Diagram
+
