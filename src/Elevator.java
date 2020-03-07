@@ -24,6 +24,7 @@ public class Elevator implements Runnable {
 	DatagramPacket sendPacket;
 	DatagramSocket sendReceiveSocket;
 	ArrayList<Integer> floorsToService = new ArrayList<Integer>();
+	private String name;
 	
 	/**
 	 * This is the constructor
@@ -40,6 +41,19 @@ public class Elevator implements Runnable {
 			se.printStackTrace();
 			System.exit(1);
 		}		
+	}
+	
+	public Elevator(int po,String n) {
+		try {
+			portNumber = po;
+
+			receiveSocket = new DatagramSocket(portNumber);
+
+		} catch (SocketException se) {
+			se.printStackTrace();
+			System.exit(1);
+		}
+		this.name = n;
 	}
 	
 	public void setCurrentFloor(int i)
@@ -136,7 +150,7 @@ public class Elevator implements Runnable {
 	/*
 	 * send a packet which contains a message 
 	 */
-	public void sendMsg(byte[] data, int len, InetAddress address, int port) throws IOException {
+	public void sendMsg(byte[] data, int len, InetAddress address, DatagramPacket packet, DatagramSocket socket, int port) throws IOException {
 
 		System.out.println("--------------------------------");
 		System.out.println(Thread.currentThread().getName() + ": sending a packet containing(String): " + new String(data));
@@ -155,11 +169,13 @@ public class Elevator implements Runnable {
 	
 	public void pickUpPassenger()
 	{
-		byte [] data = receiveMsg(receiveSocket);
-		int destFloor = data[1];
+		//System.out.println("Elevator is waiting to be requested.");
+		//byte [] data = receiveMsg(receiveSocket);
+		System.out.println("Elevator is going to a floor");
+		//int destFloor = data[1];
 		
 		//byte array should contain 0 - REQUESTED FLOOR 1 - Destination floor.
-		floorsToService.add(destFloor);
+		//floorsToService.add(destFloor);
 		
 		currentState.moveElevator();
 		currentState.moveDoor();
@@ -173,60 +189,55 @@ public class Elevator implements Runnable {
 	
 	public void deliverPassenger()
 	{
-		byte[] data = new byte[floorsToService.size()];
-		
-		for(int i = 0; i < floorsToService.size(); i++)
-		{
-			data[i] = (byte) ((int) floorsToService.get(i));
-		}
-		
-		DatagramPacket sendPacket = new DatagramPacket(data,1);
-		DatagramSocket sendReceiveSocket;
-		
-		try
-		{
-			sendMsg(data, data.length, InetAddress.getLocalHost(), 25 );
-		}
-		catch(IOException e)
-		{
-			System.out.print("Exception");
-			System.exit(1);
-		}
-		
+		System.out.println("The elevator has received a request from a floor and is delivering the passenger");
 		arriveAtFloor();
 		
 		//when the passenger is picked up, go to the desired floor and deliver the passenger
 	}
-
-	public static void main(String args[])
-	{
-		//default, the scheduler 
-		//Elevator e = new Elevator();
-		//e.pickUpPassenger();
-		
-	}
+	
+	/*
+	 * run method keep this thread to check if the received message is valid, if valid,
+	 * check the status of floor and send message packet. Else, throw IllegalAccessException
+	 */
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		/*StopState ms = new StopState(this);
-		setState(ms);
-		
-		while(true) {
-			//FloorButtonRequest request = s.getElevator();//the destination floor the elevator is asked to get to
-			System.out.println(Thread.currentThread().getName() + " has been requested and elevator goes to floor " + request.getFloorNum() + " for pickup.");
+		while (true) {
+			byte data[];
+			boolean valid;
+			ArrayList<String> arrayList;
+
+			//System.out.println("Elevator is waiting for a request");
+			data = receiveMsg(receiveSocket);
 			
-			// TODO: Add a set method for the rest of the elevator information so it can be passed to states
-			setFloor(Integer.parseInt(request.getFloorNum()));
-			arriveAtFloor();
-			System.out.println("The passenger gets on the elevator at floor " + request.getFloorNum() + " and goes " + request.getDirection().toString() + " to Floor " + request.getDestinationFloor());
-			// if we are done the requests move to end state
-			if(request.isLastRequest()) {
-				setState(new EndState(this));
-				currentState.moveDoor();
-				currentState.moveElevator();
+			DatagramSocket newSocket;
+						
+			data = fixByteArrLength(receivePacket.getLength(), data);
+			System.out.println("Elevator has received a request");
+			String msg = new String(data);
+				
+			try {
+				newSocket = new DatagramSocket();
+				DatagramPacket sendPacket = null;
+				String s = "Done";
+				byte[] result = s.getBytes();
+				sendMsg(result, result.length, receivePacket.getAddress(), sendPacket, newSocket, receivePacket.getPort());
+				System.out.println("PortNumber: "+receivePacket.getPort());
+				newSocket.close();
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
+			
+			this.pickUpPassenger();
+			this.deliverPassenger();
 		}
-		*/
+
+
+	
 		
 	}
 	
