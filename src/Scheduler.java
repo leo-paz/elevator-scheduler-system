@@ -133,7 +133,7 @@ public class Scheduler implements Runnable {
 			System.exit(1);
 		}
 		int f = Integer.parseInt(PackageInfo[1]);
-		System.out.println("Floor: " + elevators[chosenElevator].getFloor() + " Num: " + elevators[chosenElevator].getElevatorNum() + " Port: " + elevators[chosenElevator].getElevatorPortNum() );
+		//System.out.println("Floor: " + elevators[chosenElevator].getFloor() + " Num: " + elevators[chosenElevator].getElevatorNum() + " Port: " + elevators[chosenElevator].getElevatorPortNum() );
 		elevators[chosenElevator].setCurrentFloor(f);
 		System.out.println("Scheduler sending package to ElevatorSubsystem ");
 		System.out.println("To " + sendElevatorPacket.getAddress() + ", port: " + sendElevatorPacket.getPort());
@@ -175,7 +175,7 @@ public class Scheduler implements Runnable {
 		sendToFloorSubsystem(getReply);
 	}
 	public void sendToFloorSubsystem(byte[] getReply) {
-		sendFloorPacket = new DatagramPacket(getReply, receiveElevatorPacket.getLength(), receiveElevatorPacket.getAddress(), floorSubsystemPort);
+		sendFloorPacket = new DatagramPacket(getReply, receiveElevatorPacket.getLength(), receiveElevatorPacket.getAddress(), 4000);
 		
 		System.out.println("Package sending to FloorSubSytem");
 		System.out.println("To " + receiveElevatorPacket.getAddress() + " , host:" + receiveElevatorPacket.getPort());
