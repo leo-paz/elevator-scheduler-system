@@ -24,7 +24,7 @@ public class Elevator implements Runnable {
 	DatagramPacket sendPacket;
 	DatagramSocket sendReceiveSocket;
 	ArrayList<Integer> floorsToService = new ArrayList<Integer>();
-	private String name;
+	String name;
 	
 	/**
 	 * This is the constructor

@@ -39,14 +39,14 @@ public class Scheduler implements Runnable {
 			this.portNumber[i] = 2000 + i; 
 			this.elevators[i] = new Elevator(1, i, portNumber[i]);
 			try {
-				this.elevatorSockets[i] = new DatagramSocket(portNumber[i]);
+				this.elevatorSockets[i] = new DatagramSocket();//portNumber[i]);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
 		try {
-        	sendFloorSocket = new DatagramSocket();
+			sendFloorSocket = new DatagramSocket();
             sendElevatorSocket = new DatagramSocket();
             
             receiveFloorSocket = new DatagramSocket(23);
