@@ -39,14 +39,14 @@ public class Scheduler implements Runnable {
 			this.portNumber[i] = 2000 + i; 
 			this.elevators[i] = new Elevator(1, i, portNumber[i]);
 			try {
-				this.elevatorSockets[i] = new DatagramSocket(portNumber[i]);
+				this.elevatorSockets[i] = new DatagramSocket();//portNumber[i]);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
 		try {
-        	sendFloorSocket = new DatagramSocket();
+			sendFloorSocket = new DatagramSocket();
             sendElevatorSocket = new DatagramSocket();
             
             receiveFloorSocket = new DatagramSocket(23);
@@ -132,8 +132,9 @@ public class Scheduler implements Runnable {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		elevators[chosenElevator].setCurrentFloor(Integer.parseInt(PackageInfo[1]));
-		
+		int f = Integer.parseInt(PackageInfo[1]);
+		//System.out.println("Floor: " + elevators[chosenElevator].getFloor() + " Num: " + elevators[chosenElevator].getElevatorNum() + " Port: " + elevators[chosenElevator].getElevatorPortNum() );
+		elevators[chosenElevator].setCurrentFloor(f);
 		System.out.println("Scheduler sending package to ElevatorSubsystem ");
 		System.out.println("To " + sendElevatorPacket.getAddress() + ", port: " + sendElevatorPacket.getPort());
 		System.out.println("Package contains: " + new String(sendElevatorPacket.getData()));
@@ -174,7 +175,7 @@ public class Scheduler implements Runnable {
 		sendToFloorSubsystem(getReply);
 	}
 	public void sendToFloorSubsystem(byte[] getReply) {
-		sendFloorPacket = new DatagramPacket(getReply, receiveElevatorPacket.getLength(), receiveElevatorPacket.getAddress(), floorSubsystemPort);
+		sendFloorPacket = new DatagramPacket(getReply, receiveElevatorPacket.getLength(), receiveElevatorPacket.getAddress(), 4000);
 		
 		System.out.println("Package sending to FloorSubSytem");
 		System.out.println("To " + receiveElevatorPacket.getAddress() + " , host:" + receiveElevatorPacket.getPort());
