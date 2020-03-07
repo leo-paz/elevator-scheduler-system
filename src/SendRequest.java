@@ -10,7 +10,12 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This is the SendRequest Class that sends the request to the scheduler. The elevator direction
+ * button, the user input floor all are sent though this class.
+ * @version Iteration 3: March 7, 2020
+ *
+ */
 public class SendRequest implements Runnable{
 	DatagramPacket sendPacket, receivePacket;
 	DatagramSocket Socket;
@@ -23,7 +28,7 @@ public class SendRequest implements Runnable{
     Direction direction;
     
     /*
-     * send request 
+     * The is the send request's constructor
      */
 	public SendRequest() {
 		

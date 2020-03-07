@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * This is the Elevator class. It get elevator gets the requests from the floors to be serviced
- * @version Iteration 2: Feb 15th 2020
+ * @version Iteration 3: March 7th, 2020
  *
  */
 public class Elevator implements Runnable {
@@ -169,34 +169,24 @@ public class Elevator implements Runnable {
 
 	}
 	
-	
+	/**
+	 * Elevator is going to the floor to pick the passenger up
+	 */
 	public void pickUpPassenger()
 	{
-		//System.out.println("Elevator is waiting to be requested.");
-		//byte [] data = receiveMsg(receiveSocket);
+
 		System.out.println("Elevator is going to floor "  );
-		//int destFloor = data[1];
-		
-		//byte array should contain 0 - REQUESTED FLOOR 1 - Destination floor.
-		//floorsToService.add(destFloor);
-		
-	/*	currentState.moveElevator();
-		currentState.moveDoor();
-		
-		System.out.println("The elevator has received a request from a floor and is going to the floor");
-		arriveAtFloor();
-		*/
-		//state = moving
-		// string = going to floor 
-		//when the data is received, go to the floor and pick up the passenger.
+
 	}
 	
+	
+	/**
+	 * The passenger has requested a floor inside the elevator
+	 */
 	public void deliverPassenger()
 	{
 		System.out.println("The elevator has received a request from a floor and is delivering the passenger");
-		//arriveAtFloor();
-		
-		//when the passenger is picked up, go to the desired floor and deliver the passenger
+
 	}
 	
 	/*
@@ -210,7 +200,6 @@ public class Elevator implements Runnable {
 			boolean valid;
 			ArrayList<String> arrayList;
 
-			//System.out.println("Elevator is waiting for a request");
 			data = receiveMsg(receiveSocket);
 			
 			DatagramSocket newSocket;
