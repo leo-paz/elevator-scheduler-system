@@ -16,7 +16,7 @@ JUint files on Java 13 on Eclipse.
 
 Reflection on how concurrency control at the scheduler changed from Iteration 2 to Iteration 3.
 ---------------------
-In Interation 2, threads were implemented to concurrently schedule tasks between the floor calls and the user calls inside the elevator. In Iteration 3, UDP was used to create Datagram packets to send and receive messages throug the schduler to the floor and the elevator. To make sure that the elevator closest to the user requested floor would be recieving them, the logic was implemented using the datagram packets as well.
+In Interation 2, threads were implemented to concurrently schedule tasks between the floor calls and the user calls inside one elevator. In Iteration 3, UDP was used to create Datagram packets to send and receive messages throug the scheduler to the floor. The Scheduler was also used to coordinate the movement of elevators so that each elevator carries roughly the same number of passengers as all of the others and so that the waiting time for passengers at floors is minimized. This logic was implemented using the datagram packets as well.
 
 Source Code Includes:
 ---------------------
@@ -63,6 +63,7 @@ Test Included:
 --------------
 testScheduler.java
 testFloorButtonRequest.java
+testElevatorSubsytem.java -- a test file to verify that elevator subsytem is working as intende
 
 
 UML Diagrams:
@@ -89,15 +90,16 @@ Leonardo Paz:
 - Documentation
 
 Mounica Pillarisetty:
-- UML Class Diagram 
-- Reviewed and modified code
-- ReadME
+- FloorSubsytem code
+- Elevator subsystem test file
+- Review and modifications to other pieces of source code
+- Modifications to ReadME
 
 Shoana Sharma:
 - Reviewed and modified source code
 - Java Documentation
 - README
-- UML Class Diagram
+- UML Class Diagrams
 
 Fatima Hashi:
 - Reviewed and modified source
