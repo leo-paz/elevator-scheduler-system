@@ -101,6 +101,5 @@ Shoana Sharma:
 
 Fatima Hashi:
 - Reviewed and modified source
-- Test cases
 - UML Sequence Diagram
 
